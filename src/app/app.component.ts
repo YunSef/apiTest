@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiTestService } from './api-test.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'apiTest';
+  constructor(private apiservice: ApiTestService){  }
+  
+  datas:any;
+  ngOnInit(){
+    this.apiservice.getData().subscribe(res=>{this.datas=res})
+  }
 }
